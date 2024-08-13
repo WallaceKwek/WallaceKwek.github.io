@@ -829,6 +829,18 @@ main {
   line-height: 1.6;
 }
 
+.experience-list li {
+  list-style-type: circle;
+}
+
+ul.experience-list{
+  list-style-type: disc;
+  padding-left: 25px;
+  color: var(--light-gray);
+  font-weight: var(--fw-300);
+  line-height: 1.6;
+  font-size: 14px;
+}
 
 /**
  * skills 
