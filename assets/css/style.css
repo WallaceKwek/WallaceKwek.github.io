@@ -1867,8 +1867,8 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   .contact-info :is(.contact-link) {
     white-space: nowrap;
-    overflow: visible;
     text-overflow: ellipsis;
+    overflow: visible;
   }
 
   .contact-info :is(.contact-link, time, address) {
