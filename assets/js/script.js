@@ -24,7 +24,7 @@ const overlay = document.querySelector("[data-overlay]");
 
 // modal variable
 const modalImg = document.querySelector("[data-modal-img]");
-const modalTitle = document.querySelector("[data-modal-title]");
+//const modalTitle = document.querySelector("[data-modal-title]");
 const modalText = document.querySelector("[data-modal-text]");
 
 // modal toggle function
@@ -40,7 +40,7 @@ for (let i = 0; i < testimonialsItem.length; i++) {
 
     modalImg.src = this.querySelector("[data-testimonials-avatar]").src;
     modalImg.alt = this.querySelector("[data-testimonials-avatar]").alt;
-    modalTitle.innerHTML = this.querySelector("[data-testimonials-title]").innerHTML;
+    //modalTitle.innerHTML = this.querySelector("[data-testimonials-title]").innerHTML;
     modalText.innerHTML = this.querySelector("[data-testimonials-text]").innerHTML;
 
     testimonialsModalFunc();
@@ -157,3 +157,95 @@ for (let i = 0; i < navigationLinks.length; i++) {
 
   });
 }
+
+/* PROJECT MODAL */
+// Get the modal
+var modal = document.getElementById("projectModal");
+
+// Get the close button (&time span) that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// Get the modal content elements (Banner Image, TItle, Tags, Description, Video Link, External Link)
+var modalImage = document.getElementById("modalImage");
+var modalTitle = document.getElementById("modalTitle");
+var modalTags = document.getElementById("modalTags");
+var modalDescription = document.getElementById("modalDescription");
+var modalVideoLink = document.getElementById("modalVideoLink");
+var modalExternalLink = document.getElementById("modalExternalLink");
+
+// Function to Open the Modal when User clicks on a project
+function openModal(title, tags, description, imageSource, videoLink, externalLink) {
+  // Set the content to the specific project details
+  modalTitle.textContent = title;
+  modalTags.textContent = tags;
+  modalDescription.innerHTML = description;
+  modalImage.src = imageSource;
+
+  // We only show the buttons for Video Link and External Link if they exist
+  if(videoLink)
+  {
+    modalVideoLink.href = videoLink;
+    modalVideoLink.style.display = "inline";
+  }
+  else
+  {
+    modalVideoLink.style.display = "none";
+  }
+
+  if(externalLink)
+  {
+    modalExternalLink.href = externalLink;
+    modalExternalLink.style.display = "inline";
+  }
+  else
+  {
+    modalExternalLink.style.display = "none";
+  }
+
+  // Show the modal
+  modal.style.display = "block";
+  modal.querySelector('.modal-content').style.animation = 'popUp 0.3s ease';
+}
+
+// Function to close the modal
+function closeModal() {
+  var modalContent = modal.querySelector('.modal-content');
+  modalContent.style.animation = 'popDown 0.3s ease';
+  modalContent.addEventListener('animationend', function() {
+    modal.style.display = "none";
+  }, {once: true});
+}
+
+
+// Now we implement the events for when to call the modalClose function
+// When user clicks on the (x) button, close the modal
+span.addEventListener("click", function(){
+  console.log("Close button clicked");
+  closeModal();
+});
+
+// When user clicks anywhere outside the modal, close the modal
+window.addEventListener("click", function(event){
+  console.log("window clicked");
+  if(event.target == modal){
+    closeModal();
+  }
+});
+
+// Now we add event listeners to all the project itemss
+document.querySelectorAll(".project-item").forEach(function(item){
+  item.addEventListener("click", function(){
+    event.preventDefault(); // avoid scrolling to the top of the page by default
+
+    // Now we get the correct varibles for the project to put into the modal
+    var title = item.getAttribute("data-title");
+    var tags = item.getAttribute("data-tags");
+    var description = item.getAttribute("data-description");
+    var imageSource = item.getAttribute("data-image");
+    var videoLink = item.getAttribute("data-video-link");
+    var externalLink = item.getAttribute("data-site-link");
+
+    // Now we open the modal
+    openModal(title, tags, description, imageSource, videoLink, externalLink);
+  });
+});
