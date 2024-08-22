@@ -2044,7 +2044,7 @@ textarea.form-input::-webkit-resizer { display: none; }
     */
     @media (max-width: 768px){
       .modal-video-link,
-      .modal-site-link {
+      .modal-external-link {
         display: block;
         width: 100%;
         margin-right: 0;
