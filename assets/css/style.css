@@ -278,12 +278,12 @@ article.active {
 }
 
 .has-scrollbar::-webkit-scrollbar-track {
-  background: var(--onyx);
+  /* background: var(--onyx); */
   border-radius: 5px;
 }
 
 .has-scrollbar::-webkit-scrollbar-thumb {
-  background: var(--orange-yellow-crayola);
+  background: var(--white-1);
   border-radius: 5px;
 }
 
@@ -323,7 +323,14 @@ main {
   min-width: 259px;
 }
 
-
+/**
+  * OTHERS
+  */
+  .body {
+    background: var(--background-gradient);
+    object-fit: cover;
+    overflow: overlay;
+  }
 
 
 
@@ -1062,8 +1069,113 @@ ul.experience-list{
 }
 
 
+/*-----------------------------------*\
+  #PROJECTS MODAL STYLES AND ANIMATIONS
+\*-----------------------------------*/
+  @keyframes popUp {
+    0% {
+      transform: scale(0.7);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes popDown {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(0.7);
+      opacity: 0;
+    }
+  }
 
 
+   .modal{
+    display: none;
+    position: fixed;
+    z-index: 1000; /* ensures that the modal is on top of everything else */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+   }
+
+   .modal-content{
+    background-color: var(--onyx);
+    margin: 5% auto; /* 5% from the top and centered */
+    padding: 0; /* no padding to allow image to span entire length */
+
+    width: 60%;
+    height: auto;
+    border-radius: 15px;
+    overflow: hidden; /* dont allow content to stretch out */
+    position: relative;
+    animation: popUp 0.3s ease-out;
+   }
+
+   .modal-header-image{
+    width: 100%;
+    height: auto;
+    display: block;
+   }
+
+   .modal-body{
+    padding: 25px;
+   }
+
+   .modal-title{
+    font-size: var(--fs-3);
+    color: var(--vegas-gold); /* color shld stand out more than tags*/
+    font-weight: bold;
+   }
+
+   .modal-tags{
+    font-size: var(--fs-5);
+    color: var(--light-gray-70);
+   }
+
+   .modal-description{
+    margin-bottom: 20px;
+    font-size: var(--fs-6);
+    color: var(--light-gray);
+   }
+
+   .modal-video-link, .modal-external-link{
+    display: inline-block; /* make them appear on the same row */
+    margin-top: 15px;
+    margin-right: 10px;
+    background-color: var(--smoky-black); /*button color */
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: var(--vegas-gold); /* button text color */
+    font-weight: lighter;
+   }
+
+   .close{
+    z-index: 5;
+    color:#aaa;
+    float: right;
+    font-size: 27px;
+    font-weight: bold;
+    padding: 20px;
+   }
+
+   .close:hover,.close:focus{
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+   }
+
+
+   
 
 /*-----------------------------------*\
   #BLOG
@@ -1621,10 +1733,10 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   /* testimonials modal */
 
-  .testimonials-modal {
+  /* .testimonials-modal {
     gap: 35px;
     max-width: 680px;
-  }
+  } */
 
   .modal-avatar-box img { width: 80px; }
 
@@ -1661,111 +1773,7 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   .project-list, .blog-posts-list { grid-template-columns: 1fr 1fr; }
 
-  /**
-   * PROJECTS MODAL STYLES AND ANIMATIONS
-   */
-
-  @keyframes popUp {
-    0% {
-      transform: scale(0.7);
-      opacity: 0;
-    }
-    100% {
-      transform: scale(1);
-      opacity: 1;
-    }
-  }
   
-  @keyframes popDown {
-    0% {
-      transform: scale(1);
-      opacity: 1;
-    }
-    100% {
-      transform: scale(0.7);
-      opacity: 0;
-    }
-  }
-
-
-   .modal{
-    display: none;
-    position: fixed;
-    z-index: 1000; /* ensures that the modal is on top of everything else */
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5);
-   }
-
-   .modal-content{
-    background-color: var(--onyx);
-    margin: 5% auto; /* 5% from the top and centered */
-    padding: 0; /* no padding to allow image to span entire length */
-
-    width: 60%;
-    height: auto;
-    border-radius: 15px;
-    overflow: hidden; /* dont allow content to stretch out */
-    position: relative;
-    animation: popUp 0.3s ease-out;
-   }
-
-   .modal-header-image{
-    width: 100%;
-    height: auto;
-    display: block;
-   }
-
-   .modal-body{
-    padding: 25px;
-   }
-
-   .modal-title{
-    font-size: var(--fs-3);
-    color: var(--vegas-gold); /* color shld stand out more than tags*/
-    font-weight: bold;
-   }
-
-   .modal-tags{
-    font-size: var(--fs-5);
-    color: var(--light-gray-70);
-   }
-
-   .modal-description{
-    margin-bottom: 20px;
-    font-size: var(--fs-6);
-    color: var(--light-gray);
-   }
-
-   .modal-video-link, .modal-external-link{
-    display: inline-block; /* make them appear on the same row */
-    margin-top: 15px;
-    margin-right: 10px;
-    background-color: var(--smoky-black); /*button color */
-    padding: 10px 15px;
-    border-radius: 5px;
-    text-decoration: none;
-    color: var(--vegas-gold); /* button text color */
-    font-weight: lighter;
-   }
-
-   .close{
-    z-index: 5;
-    color:#aaa;
-    float: right;
-    font-size: 27px;
-    font-weight: bold;
-    padding: 20px;
-   }
-
-   .close:hover,.close:focus{
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-   }
 
   /**
    * CONTACT
@@ -1777,7 +1785,7 @@ textarea.form-input::-webkit-resizer { display: none; }
     width: max-content;
     margin-left: auto;
   }
-  
+
 }
 
 
@@ -2031,12 +2039,6 @@ textarea.form-input::-webkit-resizer { display: none; }
   /**
 	 * OTHERS
 	 */
-
-   .body {
-      background: var(--background-gradient);
-      object-fit: cover;
-      overflow: overlay;
-   }
 }
 
 /**
