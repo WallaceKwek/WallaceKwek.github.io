@@ -2037,38 +2037,36 @@ textarea.form-input::-webkit-resizer { display: none; }
       object-fit: cover;
       overflow: overlay;
    }
-
-   /**
-    * RESPONSIVE STUFF
-    */
-   @media (max-width: 768px){
-    .modal-video-link,
-    .modal-site-link {
-      display: block;
-      width: 100%;
-      margin-right: 0;
-      margin-bottom: 10px;
-      text-align: center;
-      padding: 8px 12px; /* Smaller padding */
-      font-size: 14px; /* Smaller font size */
-    }
-
-    .modal-content{   
-      width: 90%;
-    }
-
-    .modal-description {
-      font-size: var(--fs-8); /* Smaller font size for screens 768px or smaller */
-    }
-
-    .modal-title {
-      font-size: var(--fs-5); /* Smaller font size for screens 768px or smaller */
-    }
-    
-    .modal-tags{
-      font-size: var(--fs-7); /* Smaller font size for screens 768px or smaller */
-    }
-   }
-
-
 }
+
+/**
+    * RESPONSIVE STUFF FOR MODAL
+    */
+    @media (max-width: 768px){
+      .modal-video-link,
+      .modal-site-link {
+        display: block;
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+        text-align: center;
+        padding: 8px 12px; /* Smaller padding */
+        font-size: 14px; /* Smaller font size */
+      }
+  
+      .modal-content{   
+        width: 90%;
+      }
+  
+      .modal-description {
+        font-size: var(--fs-8); /* Smaller font size for screens 768px or smaller */
+      }
+  
+      .modal-title {
+        font-size: var(--fs-5); /* Smaller font size for screens 768px or smaller */
+      }
+      
+      .modal-tags{
+        font-size: var(--fs-7); /* Smaller font size for screens 768px or smaller */
+      }
+     }
